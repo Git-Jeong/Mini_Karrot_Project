@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DB_DAO {
 
-    // DB 연결 메서드
+    // DB 연결 메서드xwxx
     public static Connection getConnection() {
          String URL = "jdbc:oracle:thin:@localhost:1521:xe";
          String ID = "hr";
@@ -14,7 +14,7 @@ public class DB_DAO {
 
 
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver"); // JDBC 드라이버 로드
+            Class.forName("oracle.jdbc.driver.OracleDriver"); // OraclexDriver
             Connection conn = DriverManager.getConnection(URL, ID, PW);
             return conn;
         } catch (ClassNotFoundException e) {

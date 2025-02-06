@@ -27,6 +27,7 @@ public class ProductList {
 			
 			System.out.printf("%3d : %20s, %10d, %4d, %5s\n", i+1, productName, price, viewCount, time); 
 		}
+		System.out.println("뒤로가기 : '0'");
 		System.out.print("구매를 원하는 상뭄의 번호를 입력 >>> ");
 		i++;
 		
@@ -38,8 +39,9 @@ public class ProductList {
 				int price = product.get(select_product_number).getPrice();
 				String productName = product.get(select_product_number).getProductName();  
 				String saler = product.get(select_product_number).getUserID(); 
-				String detail = product.get(select_product_number).getDetail();  
-				int viewCount = product.get(select_product_number).getViewCount();
+				String detail = product.get(select_product_number).getDetail();
+				int viewCount = product.get(select_product_number).getViewCount() + 1;
+				product.get(select_product_number).setViewCount(viewCount);
 				
 				System.out.printf("\t 판매자 : %s\n", saler); 
 				System.out.printf("\t 상품명 : %s\n", productName); 
@@ -47,11 +49,7 @@ public class ProductList {
 				System.out.printf("\t 설명 : %s\n", detail); 
 				System.out.printf("\t 가격 : %s\n", price); 
 				
-				boolean check = Get_All_Product_API.viewCountPlus(product.get(select_product_number));
-				if(check) {
-					//조회수 올리기 성공
-					product.get(select_product_number).setViewCount(viewCount + 1);
-				}
+				Get_All_Product_API.viewCountPlus(product.get(select_product_number));
 				
 				System.out.print("상품을 구매하시겠습니까? 네 : 'Y',  뒤로가기 : AnyKey >>> ");
 				String option = Input.inputStrig();

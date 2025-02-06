@@ -10,7 +10,7 @@ public class Completed_PurchaseList {
 	public static void completed_PurchaseList() {
 		ArrayList<PurchaseDTO> purchaseList = Completed_PurchaseList_API.purchaseListAPI();
 		 
-		// 최대 자릿수 구하기2 
+		// 최대 자릿수 구하기
 		 
 		System.out.println();
 		System.out.println("===== 내가 구매한 상품의 목록 =====");

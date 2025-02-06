@@ -47,11 +47,10 @@ public class Get_All_Product_API {
 		return productList;
 	}
 
-	public static boolean viewCountPlus(ProductDTO product) {
+	public static void viewCountPlus(ProductDTO product) {
 		boolean result = false;
 		int productID = product.getProductID();
 		int viewCount = product.getViewCount();
-		viewCount++;
 
 		String sql = "UPDATE PRODUCT SET VIEWCOUNT = ? WHERE PRODUCTID = ?";
 
@@ -60,16 +59,11 @@ public class Get_All_Product_API {
 			psmt.setInt(1, viewCount); // 조회수 설정
 			psmt.setInt(2, productID); // ID 설정
 
-			try (ResultSet rs = psmt.executeQuery()) {
-				if (rs.next()) { // 데이터 존재 여부 확인
-					result = true;
-				}
-			}
+			psmt.executeQuery();
 
 		} catch (SQLException e) {
 			throw new RuntimeException("조회수 SQL 오류 발생: " + e.getMessage(), e);
 		}
-		return result;
 	}
 
 	public static boolean buyTheProduct(ProductDTO select_product) {
