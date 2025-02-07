@@ -9,13 +9,13 @@ public class Signup {
 
 		MemberDTO memberDTO = MemberDTO.getInstance();
 
-		System.out.print("아이디 : ");
+		System.out.print("아이디  >>>  ");
 		String input_id = Input.inputStrig();
-		System.out.print("비밀번호 : ");
+		System.out.print("비밀번호  >>>  ");
 		String input_pw = Input.inputStrig();
-		System.out.print("비밀번호 재확인 : ");
+		System.out.print("비밀번호 재확인  >>>  ");
 		String input_pw_check = Input.inputStrig();
-		System.out.print("이름 : ");
+		System.out.print("이름  >>>  ");
 		String input_name = Input.inputStrig(); 
 		
 		boolean pw_check = checkPw(input_pw, input_pw_check);

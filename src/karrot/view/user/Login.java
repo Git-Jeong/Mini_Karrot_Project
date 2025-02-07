@@ -11,10 +11,10 @@ public class Login {
 		SecureUserInfo secureUserInfo = SecureUserInfo.getInstance();
 
 		// 로그인 서비스 로직
-		System.out.println(" ----- 로그인 서비스 ----- ");
-		System.out.print("id : ");
+		System.out.println("========== 로끄인 ==========");
+		System.out.print("id  >>>  ");
 		String input_id = Input.inputStrig();
-		System.out.print("pw : ");
+		System.out.print("pw  >>>  ");
 		String input_pw = Input.inputStrig(); 
 		// 사용자 정보 검증
 

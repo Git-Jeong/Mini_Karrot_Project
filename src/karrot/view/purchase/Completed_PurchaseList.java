@@ -13,11 +13,11 @@ public class Completed_PurchaseList {
 		// 최대 자릿수 구하기
 		 
 		System.out.println();
-		System.out.println("===== 내가 구매한 상품의 목록 =====");
+		System.out.println("========== 내가 구매한 상품의 목록 ==========");
 		for (int i = 0; i < purchaseList.size(); i++) {
 			String productName = purchaseList.get(i).getName();
 			int price = purchaseList.get(i).getPrice(); 
-			System.out.printf("%3d : %10s, %d\n", i+1, productName, price);
+			System.out.printf("%3d : %d, %10s\n", i+1, price, productName);
 		}
 		System.out.println();
 		

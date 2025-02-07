@@ -19,11 +19,11 @@ public class Mypage {
         System.out.printf("====== %s님 안녕하세요! =====\n", userName);
 
        while (true) {
-           System.out.printf("내가 판매중인 상품 : [%d]\n", SALE_PRODUCTS_LIST_CODE);
-           System.out.printf("내가 판매 완료한 상품 : [%d]\n", SALE_SOLD_PRODUCTS_LIST_CODE);
-           System.out.printf("내가 구매한 항목 : [%d]\n", PURCHASE_CODE);
-           System.out.println("뒤로가기 : AnyKey");
-           System.out.print("원하는 항목을 선택하세요 >>> ");
+           System.out.printf("\t[%d] : 내가 판매중인 상품\n", SALE_PRODUCTS_LIST_CODE);
+           System.out.printf("\t[%d] : 내가 판매 완료한 상품 \n", SALE_SOLD_PRODUCTS_LIST_CODE);
+           System.out.printf("\t[%d] : 내가 구매한 항목 \n", PURCHASE_CODE);
+           System.out.println("AnyKey : 뒤로가기");
+           System.out.print("원하는 항목을 선택하세요  >>>  ");
            
            String selectOption = Input.inputStrig();
            if(selectOption.equals(String.valueOf(SALE_PRODUCTS_LIST_CODE))) {
@@ -40,8 +40,7 @@ public class Mypage {
                Completed_PurchaseList.completed_PurchaseList(); 
            }
            else {
-               //뒤로가기
-               System.out.println("뒤로가기 버튼");
+               //뒤로가기 
                break;
            }
        }

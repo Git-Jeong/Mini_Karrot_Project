@@ -68,12 +68,13 @@ public class ProductDTO {
    }
 
    //METHOD 4. 상품 목록 페이지 -> 상품명, 가격
-   public ProductDTO(int productID, String productName, int price, int viewCount) {
+   public ProductDTO(int productID, String productName, int price, int viewCount, String detail) {
       super();
       this.productID = productID;
       this.productName = productName;
       this.price = price;
       this.viewCount = viewCount;
+      this.detail = detail;
    }
    
    
@@ -88,8 +89,7 @@ public class ProductDTO {
 
    public void setViewCount(int viewCount) {
       this.viewCount = viewCount;
-   } 
-
+   }
 
    public void setSelectProductID(int selectProductID) {
 	   this.selectProductID = selectProductID;

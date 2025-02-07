@@ -15,14 +15,14 @@ public class ProductSale {
 		String productDescription ;
 		int productPrice;
 
-		System.out.print("상품 이름 : ");
+		System.out.print("상품 이름  >>>  ");
 		productName = Input.inputStrig();
-		System.out.print("상품 설명 : ");
+		System.out.print("상품 설명  >>>  ");
 		productDescription = Input.inputStrig();
-		System.out.print("상품 가격 : ");
+		System.out.print("상품 가격  >>>  ");
 		productPrice = Input.inputNumber();
 
-		System.out.print("상품을 등록하시겠습니까? 네 : 'Y',  취소 'Anykey' ");
+		System.out.print("상품을 등록하시겠습니까? 네 : 'Y',  취소 'Anykey'  >>>  ");
 		String input_save_check = Input.inputStrig();
 		if(input_save_check.equalsIgnoreCase("Y")) {
 			// 사용자가 저장을 했을 시

@@ -8,8 +8,6 @@ import karrot.model.productAPI.Product_My_Sale_List_API;
 import karrot.view.util.Input;
 
 public class ProductList {
-	
-	
 	public static void productList() {
 		boolean service = true;
 		while (service) {
@@ -69,7 +67,7 @@ public class ProductList {
 
 					Get_All_Product_API.viewCountPlus(product.get(select_product_number));
 
-					System.out.print("상품을 구매하시겠습니까? 네 : 'Y',  뒤로가기 : AnyKey >>> ");
+					System.out.print("상품을 구매하시겠습니까? 네 : 'Y',  뒤로가기 : AnyKey  >>>  ");
 					String option = Input.inputStrig();
 					if(option.equalsIgnoreCase("Y")) {
 						boolean buy_check = Get_All_Product_API.buyTheProduct(product.get(select_product_number));
@@ -96,16 +94,37 @@ public class ProductList {
 	}
 	
 	public static void mySaleList() {
-		ArrayList<ProductDTO> product = Product_My_Sale_List_API.my_Sale_List_API();
- 
-		int index = 1; 
-		System.out.println();
-		System.out.println("===== 내가 판매중인 상품의 목록 =====");
-		for (ProductDTO productDTO : product) {
-			// 출력 형식 수정
-			System.out.printf("[%3d], %15s, %10d원\n",
-					index++, productDTO.getProductName(), productDTO.getPrice());
-		} 
+		boolean service = true;
+		while (service) {
+			ArrayList<ProductDTO> product = Product_My_Sale_List_API.my_Sale_List_API();
+
+			System.out.println();
+
+			int index;
+			System.out.println("========== 내가 판매중인 상품의 목록 ==========");
+			for (index = 0; index < product.size();  index++) {
+				// 출력 형식 수정
+				String productName = product.get(index).getProductName();
+				int viewCount = product.get(index).getViewCount();
+				int price = product.get(index).getPrice();
+				System.out.printf("%3d : %,10d원 %4d회, %s \n", index + 1, price, viewCount, productName);
+			}
+			int back_num = 0;
+			String bacl_string = "뒤로가기";
+			System.out.printf("\n%3d : %10s \n", back_num, bacl_string);
+			System.out.print("상품수정 : '해당 번호', 나가기 : '0';   >>>  ");
+
+			int option = Input.inputNumber();
+			if(option > 0 && option < index + 1) {
+				//상품 수정모드 진행
+				option--;
+				Product_Update.productUpdate(product.get(option));
+			} else if (option == 0) {
+				//뒤로가기
+				service = false;
+			}
+
+		}
 		System.out.println();
 	} 
 }

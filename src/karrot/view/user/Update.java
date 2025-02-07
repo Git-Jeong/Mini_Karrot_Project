@@ -21,16 +21,16 @@ public static void updateService() {
 	boolean authCheck = Auth_API.authAPI();
 
 	if (authCheck) {
-		System.out.println("--정보 변경--");
-		System.out.print("pw : ");
+		System.out.println("========== 정보 변경 ==========");
+		System.out.print("pw  >>>  ");
 		String new_pw1 = Input.inputStrig();
-		System.out.print("pw check : ");
+		System.out.print("pw check  >>>  ");
 		String new_pw2 = Input.inputStrig();
-		System.out.print("name : ");
+		System.out.print("name  >>>  ");
 		String new_name = Input.inputStrig();
 
 		if(new_pw1.equals(new_pw2)) {
-			System.out.print("정보를 수정하시겠습니까? 예 : 'Y' 아니요 : AnyKey >>> ");
+			System.out.print("정보를 수정하시겠습니까? 예 : 'Y' 아니요 : AnyKey  >>>  ");
 			String user_update_check = Input.inputStrig();
 			if(user_update_check.equalsIgnoreCase("Y")) {
 				memberDTO.setPw(new_pw1);

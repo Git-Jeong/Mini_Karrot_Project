@@ -19,7 +19,7 @@ public class Product_My_Sale_List_API {
 		String userId = userInfo.getSecureUserId(); 
 
 		//DB에서 모든 상품의 LIST를 가지고 오는 것
-		String sql = "SELECT PRODUCTID, PRODUCTNAME, PRICE, VIEWCOUNT FROM PRODUCT WHERE USERID = ? AND ONSALE = ?";
+		String sql = "SELECT PRODUCTID, PRODUCTNAME, PRICE, VIEWCOUNT, DETAIL FROM PRODUCT WHERE USERID = ? AND ONSALE = ?";
 
 		try (Connection conn = DB_DAO.getConnection();
 			PreparedStatement psmt = conn.prepareStatement(sql)) { 
@@ -35,8 +35,9 @@ public class Product_My_Sale_List_API {
 					int productId = rs.getInt("PRODUCTID");
 					String productName = rs.getString("PRODUCTNAME"); // ResultSet에서 USERNAME 가져오기
 					int price = rs.getInt("PRICE"); // ResultSet에서 USERID 가져오기
-					int viewCount = rs.getInt("VIEWCOUNT"); 
-					productList.add(new ProductDTO(productId, productName, price, viewCount));
+					int viewCount = rs.getInt("VIEWCOUNT");
+					String detail = rs.getString("DETAIL");
+					productList.add(new ProductDTO(productId, productName, price, viewCount, detail));
 				}
 			}
 		} catch (SQLException e) {
