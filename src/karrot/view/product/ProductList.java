@@ -23,7 +23,7 @@ public class ProductList {
 			String title_price = "가격";
 			String title_viewCount = "조회수";
 			String title_time = "시간";
-			System.out.printf("%3s : %12s  %9s  %3s %17s\n",
+			System.out.printf("%3s : %12s  %9s  %4s %8s\n",
 					title_index, title_time, title_price, title_viewCount, title_prpduct_name);
 			for (i = 0; i < product.size(); i++) {
 				// 출력 형식 수정
@@ -38,7 +38,7 @@ public class ProductList {
 					formattedTime = time.substring(2, 10) + " " + time.substring(11, 16);
 				}
 
-				System.out.printf("%3d : %s, %10d, %5d, \t%s\n", i+1, formattedTime, price, viewCount, productName);
+				System.out.printf("%3d : %s %,10d원 %5d회 \t%s\n", i+1, formattedTime, price, viewCount, productName);
 			}
 
 			int back_num = 0;
@@ -63,9 +63,9 @@ public class ProductList {
 
 					System.out.printf("\t 판매자 : %s\n", saler);
 					System.out.printf("\t 상품명 : %s\n", productName);
-					System.out.printf("\t 조회수 : %s\n", viewCount);
+					System.out.printf("\t 조회수 : %d\n", viewCount);
 					System.out.printf("\t 설명 : %s\n", detail);
-					System.out.printf("\t 가격 : %s\n", price);
+					System.out.printf("\t 가격 : %,d원\n", price);
 
 					Get_All_Product_API.viewCountPlus(product.get(select_product_number));
 
