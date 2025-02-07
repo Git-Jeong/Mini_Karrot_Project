@@ -1,0 +1,8 @@
+db.driver = DB_DRIVER
+
+db.host = DB_HOST
+db.port = DB_PORT
+
+db.service = DB_SERVICE
+db.password = DB_PW
+db.username = DB_ID
