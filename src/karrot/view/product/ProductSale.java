@@ -22,13 +22,24 @@ public class ProductSale {
 		System.out.print("상품 가격 : ");
 		productPrice = Input.inputNumber();
 
-		ProductDTO productDTO = new ProductDTO(userID ,productName, productDescription, productPrice);
+		System.out.print("상품을 등록하시겠습니까? 네 : 'Y',  취소 'Anykey' ");
+		String input_save_check = Input.inputStrig();
+		if(input_save_check.equalsIgnoreCase("Y")) {
+			// 사용자가 저장을 했을 시
 
-		boolean sale_commit_check = Product_Sale_API.createProduct(productDTO);
+			ProductDTO productDTO = new ProductDTO(userID ,productName, productDescription, productPrice);
 
-		if (sale_commit_check) {
-			//상품 등록에 성공
-			System.out.println("상품을 정상적으로 등록하였습니다.");
+			boolean sale_commit_check = Product_Sale_API.createProduct(productDTO);
+
+			if (sale_commit_check) {
+				//상품 등록에 성공
+				System.out.println("상품을 정상적으로 등록하였습니다.");
+			}
 		}
+		else{
+			System.out.println("취소했습니다.");
+		}
+
+		System.out.println();
 	}
 }

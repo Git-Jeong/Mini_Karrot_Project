@@ -14,28 +14,38 @@ public class ProductList {
 		ArrayList<ProductDTO> product = Get_All_Product_API.getAllProductAPI();
   
 		System.out.println();
-		System.out.println("===== 사람들이 판매중인 상품의 목록 =====");
+		System.out.println("========== 사람들이 판매중인 상품의 목록 ==========");
 		int i;
-		System.out.printf("%3s %21s %10s %4s %19s\n", "번호", "상품 이름", "가격", "조회수", "시간");
-
+		String title_index = "번호";
+		String title_prpduct_name = "상품 이름";
+		String title_price = "가격";
+		String title_viewCount = "조회수";
+		String title_time = "시간";
+		System.out.printf("%3s : %11s  %9s  %3s %17s\n",
+				title_index, title_prpduct_name, title_price, title_viewCount, title_time);
 		for (i = 0; i < product.size(); i++) {
 			// 출력 형식 수정
 			int price = product.get(i).getPrice();
-			String productName = product.get(i).getProductName(); 
+			String productName = product.get(i).getProductName();
 			int viewCount = product.get(i).getViewCount();
 			String time = product.get(i).getTime();
-			
-			System.out.printf("%3d : %20s, %10d, %4d, %5s\n", i+1, productName, price, viewCount, time); 
+
+			System.out.printf("%3d : %13s, %10d, %5d, %10s\n", i+1, productName, price, viewCount, time);
 		}
-		System.out.println("뒤로가기 : '0'");
-		System.out.print("구매를 원하는 상뭄의 번호를 입력 >>> ");
+
+		int back_num = 0;
+		String back_string = "뒤로가기";
+
+		System.out.printf("\n%3d : %13s\n\n", back_num, back_string);
+
+		System.out.print("원하는 옵션의 번호를 입력 >>> ");
 		i++;
 		
 		while(true) {  
 			int select_product_number = Input.inputNumber();
 			if(select_product_number < i && select_product_number > 0) {
 				select_product_number = select_product_number -1; 
-				System.out.println("===== 상품 세부 정보 ===== ");
+				System.out.println("========== 상품 세부 정보 ========== ");
 				int price = product.get(select_product_number).getPrice();
 				String productName = product.get(select_product_number).getProductName();  
 				String saler = product.get(select_product_number).getUserID(); 

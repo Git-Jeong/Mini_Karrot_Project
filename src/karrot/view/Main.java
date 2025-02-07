@@ -47,7 +47,7 @@ public class Main {
 	
 	private static int nonLoginService() {
 		while (true) {
-			System.out.println("==== 당근마켓 ====");
+			System.out.println("========== 당근마켓 ==========");
 			System.out.printf("회원가입 : '%d',\t 로그인 : '%d',\t 종료:AnyKey \n", SIGNUP_CODE, LOGIN_CODE);
 			System.out.print("원하는 옵션을 선택  >>> ");
 			String inputOption = Input.inputStrig();

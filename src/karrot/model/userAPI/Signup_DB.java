@@ -1,6 +1,6 @@
 package karrot.model.userAPI;
 
-import karrot.model.DB_DAO;
+import karrot.model.db_connect.DB_DAO;
 import karrot.model.dto.MemberDTO;
 
 import java.sql.Connection;

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import karrot.model.DB_DAO;
+import karrot.model.db_connect.DB_DAO;
 import karrot.model.dto.ProductDTO;
 import karrot.model.dto.SecureUserInfo;
 

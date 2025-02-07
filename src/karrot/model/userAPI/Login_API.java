@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import karrot.model.DB_DAO;
+import karrot.model.db_connect.DB_DAO;
 import karrot.model.dto.SecureUserInfo;
 import karrot.model.dto.MemberDTO;
 
