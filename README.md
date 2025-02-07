@@ -30,4 +30,5 @@
 ## 📄 프로젝트 문서  
 - **[요구사항 명세서](docs/requirements.pdf)**  
 - **[ERD 다이어그램](docs/erd.png)**  
+- **[SQL Table query](docs/Sql_Query.txt)**  
  
