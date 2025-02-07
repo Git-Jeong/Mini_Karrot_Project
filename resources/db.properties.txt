@@ -3,6 +3,6 @@ db.driver = DB_DRIVER		// ex : jdbc:oracle:thin
 db.host = DB_HOST		// ex : localhost
 db.port = DB_PORT		// ex : 12345
 
-db.service = DB_SERVICE	// ex : xe
+db.service = DB_SERVICE// ex : xe
 db.password = DB_PW		// ex : admin
 db.username = DB_ID		// ex : admin
