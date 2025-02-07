@@ -30,7 +30,7 @@ public static void updateService() {
 		String new_name = Input.inputStrig();
 
 		if(new_pw1.equals(new_pw2)) {
-			System.out.print("정보를 수정하시겠습니까? 예 : 'Y' 아니요 : AnyKey  >>>  ");
+			System.out.print("정보를 수정하시겠습니까? 예 : 'Y' 아니요 : 'N'  >>>  ");
 			String user_update_check = Input.inputStrig();
 			if(user_update_check.equalsIgnoreCase("Y")) {
 				memberDTO.setPw(new_pw1);
@@ -43,10 +43,12 @@ public static void updateService() {
 					System.out.println("변경에 실패했습니다!");
 				}
 			}
-			else {
+			else if(user_update_check.equalsIgnoreCase("N")) {
 				System.out.println("취소했습니다.");
 			}
-
+			else {
+				System.out.print("재입력  >>>  ");
+			}
 		}
 
 		else {

@@ -71,7 +71,7 @@ public class Main {
 				}
 			}
 			else {
-				System.out.print("재입력  >>>  ");
+				System.out.print("알맞지 않은 입력.");
 			}
 			System.out.println();
 			System.out.println();

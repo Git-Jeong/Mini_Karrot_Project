@@ -73,12 +73,14 @@ public class Product_Update {
                 System.out.print("새로운 가격  >>>  ");
                 int new_price = Input.inputNumber();
 
-                product.setProductName(new_productName);
-                product.setDetail(new_productDetail);
-                product.setPrice(new_price);
-                name_commit_check = Product_Update_API.product_Update_Name(product);
-                deail_commit_check = Product_Update_API.product_Update_Detail(product);
-                price_commit_check = Product_Update_API.product_Update_Price(product);
+                if (updateCheck()){
+                    product.setProductName(new_productName);
+                    product.setDetail(new_productDetail);
+                    product.setPrice(new_price);
+                    name_commit_check = Product_Update_API.product_Update_Name(product);
+                    deail_commit_check = Product_Update_API.product_Update_Detail(product);
+                    price_commit_check = Product_Update_API.product_Update_Price(product);
+                }
             }
             else if (input.equalsIgnoreCase(DELETE_PRODUCT)){
                 //상품을 삭제하는 코드
@@ -123,9 +125,18 @@ public class Product_Update {
         boolean result = false;
 
         System.out.print("상품 정보를 수정하시겠습니까? 예 : 'Y',  아니요 : AnyKey  >>>  ");
-        String input = Input.inputStrig();
-        if (input.equalsIgnoreCase("Y")){
-            result = true;
+        while (true){
+            String input = Input.inputStrig();
+            if (input.equalsIgnoreCase("Y")){
+                result = true;
+                break;
+            }
+            else if (input.equalsIgnoreCase("N")){
+                break;
+            }
+            else {
+                System.out.print("재립력  >>>  ");
+            }
         }
 
         return result;

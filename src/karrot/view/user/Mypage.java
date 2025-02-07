@@ -7,6 +7,7 @@ import karrot.view.purchase.Completed_SaleList;
 import karrot.view.util.Input;
 
 public class Mypage {
+    static int BACK_BUTTON = 0;
     static int SALE_PRODUCTS_LIST_CODE = 1;
     static int SALE_SOLD_PRODUCTS_LIST_CODE = 2;
     static int PURCHASE_CODE = 3;
@@ -22,7 +23,7 @@ public class Mypage {
            System.out.printf("\t[%d] : 내가 판매중인 상품\n", SALE_PRODUCTS_LIST_CODE);
            System.out.printf("\t[%d] : 내가 판매 완료한 상품 \n", SALE_SOLD_PRODUCTS_LIST_CODE);
            System.out.printf("\t[%d] : 내가 구매한 항목 \n", PURCHASE_CODE);
-           System.out.println("AnyKey : 뒤로가기");
+           System.out.printf("\t[%d] : 뒤로가기\n", BACK_BUTTON);
            System.out.print("원하는 항목을 선택하세요  >>>  ");
            
            String selectOption = Input.inputStrig();
@@ -39,8 +40,8 @@ public class Mypage {
                //내가 구매한 상품의 목록 
                Completed_PurchaseList.completed_PurchaseList(); 
            }
-           else {
-               //뒤로가기 
+           else if(selectOption.equals(String.valueOf(BACK_BUTTON))) {
+               //뒤로가기
                break;
            }
        }
