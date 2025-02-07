@@ -1,0 +1,72 @@
+----------------------------------------------------------------------------
+---------------------------------- Table -----------------------------------
+----------------------------------------------------------------------------
+
+-- 회원 정보
+-- ID (PK), PW (NN), 닉네임 (NN)
+CREATE TABLE SALE_USER (
+    userID VARCHAR2(50)
+  , userPW VARCHAR2(50)
+  , userNAME VARCHAR2(50)
+  , CONSTRAINT SU_ID_PK PRIMARY KEY(userID)
+  , CONSTRAINT SU_PW_NN CHECK(userPW IS NOT NULL)
+  , CONSTRAINT SU_NANE_NN CHECK(userNAME IS NOT NULL)
+);
+
+-- 상품 정보
+-- 상품ID (PK), 상품 이름 (NN), 상품 가격 (NN, 10억 이하), 상품 설명 (NN), 상품 판매중인지 확인(초기값 1, 1 = TRUE, 0 = FALSE),조회수(초기값 0), 등록시간, 판매자ID(fk)
+CREATE TABLE PRODUCT (
+    productID NUMBER
+  , productNAME VARCHAR2(50)
+  , price NUMBER
+  , detail VARCHAR2(600) 
+  , onSale NUMBER(1) DEFAULT 1
+  , viewcount NUMBER DEFAULT 0
+  , onTime DATE
+  , userID VARCHAR2(50)
+  , CONSTRAINT PT_ID_PK PRIMARY KEY(productID)
+  , CONSTRAINT PT_NAME_NN CHECK(productNAME IS NOT NULL)
+  , CONSTRAINT PT_PRICE_NN CHECK(price IS NOT NULL AND PRICE <= 1000000000)
+  , CONSTRAINT PT_DETAIL_NN CHECK(detail IS NOT NULL)
+  , CONSTRAINT PT_ONSALE_CK CHECK(OnSale IN (0, 1))
+  , CONSTRAINT PT_SELLERID_FK FOREIGN KEY(userID) REFERENCES SALE_USER(userID) ON DELETE CASCADE
+);
+
+-- 상품ID 시퀀스 생성
+CREATE SEQUENCE PRODUCT_NUM
+INCREMENT BY 1
+START WITH 1001;
+
+-- 판매된 상품 목록
+-- 판매ID (PK), 구매자ID (FK), 판매된 상품 번호 (FK), 판매된 시간
+CREATE TABLE PURCHASE (
+    purchaseID NUMBER
+  , userID VARCHAR2(50)
+  , productID NUMBER
+  , onTime DATE
+  , CONSTRAINT PE_ID_PK PRIMARY KEY(purchaseID)
+  , CONSTRAINT PE_BUYERID_FK FOREIGN KEY(userID) REFERENCES SALE_USER(userID) ON DELETE CASCADE
+  , CONSTRAINT PE_PRODUCTID_FK FOREIGN KEY(productID) REFERENCES PRODUCT(productID) ON DELETE CASCADE
+);
+
+-- 판매ID 시퀀스 생성
+CREATE SEQUENCE PURCHASE_NUM
+INCREMENT BY 1
+START WITH 1001;
+
+
+
+-- PRODUCT 테이블의 시퀀스 삭제
+-- DROP SEQUENCE PRODUCT_NUM;
+
+-- PURCHASE 테이블의 시퀀스 삭제
+-- DROP SEQUENCE PURCHASE_NUM;
+
+-- 유저 테이블 삭제
+-- DROP TABLE SALE_USER CASCADE CONSTRAINTS;
+
+-- PRODUCT 테이블 삭제
+-- DROP TABLE PRODUCT CASCADE CONSTRAINTS;
+
+-- PURCHASE 테이블 삭제
+-- DROP TABLE PURCHASE CASCADE CONSTRAINTS;
