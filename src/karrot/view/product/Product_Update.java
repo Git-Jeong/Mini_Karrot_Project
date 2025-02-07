@@ -1,6 +1,7 @@
 package karrot.view.product;
 
 import karrot.model.dto.ProductDTO;
+import karrot.model.productAPI.Product_Delete_API;
 import karrot.model.productAPI.Product_Update_API;
 import karrot.view.util.Input;
 
@@ -10,10 +11,11 @@ public class Product_Update {
     static final int UPDATE_DEAIL = 2;
     static final int UPDATE_PRICE = 3;
     static final int UPDATE_ALL = 4;
+    static final String DELETE_PRODUCT = "D";
 
     public static void productUpdate(ProductDTO product) {
-
-        while (true){
+        boolean service = true;
+        while (service){
             boolean name_commit_check = false;
             boolean deail_commit_check = false;
             boolean price_commit_check = false;
@@ -33,6 +35,7 @@ public class Product_Update {
             System.out.println("========== 상품정보 수정 ==========");
             System.out.printf("\t[%d] : 상품 이름 변경,   [%d] : 상품 설명 변경  \n", UPDATE_NAME, UPDATE_DEAIL);
             System.out.printf("\t[%d] : 상품 가격 변경,   [%d] : 모든 정보 수정  \n", UPDATE_PRICE, UPDATE_ALL);
+            System.out.printf("\t[%s] : 상품 삭제\n", DELETE_PRODUCT);
             System.out.println("\t뒤로가기 : AnyKey");
             System.out.print("원하는 옵션 선택  >>>  ");
             String input = Input.inputStrig();
@@ -77,9 +80,30 @@ public class Product_Update {
                 deail_commit_check = Product_Update_API.product_Update_Detail(product);
                 price_commit_check = Product_Update_API.product_Update_Price(product);
             }
+            else if (input.equalsIgnoreCase(DELETE_PRODUCT)){
+                //상품을 삭제하는 코드
+                System.out.print("상품을 정말 삭제하시겠습니까? 네 : 'Y',  아니요 : : 'N'  >>> ");
+                while (true){
+                    String delete_check = Input.inputStrig();
+                    if (delete_check.equalsIgnoreCase("Y")){
+                        //삭제
+                        boolean delete_API_check = Product_Delete_API.product_Delete_API(product);
+                        if(delete_API_check){
+                            System.out.println("상품을 정상적으로 삭제했습니다.");
+                        }
+                        service = false;
+                        break;
+                    }
+                    else if (delete_check.equalsIgnoreCase("N")){
+                        //미삭제
+                        System.out.println("삭제를 취소합니다.");
+                        break;
+                    }
+                }
+            }
             else {
                 //뒤로가기 버튼
-                break;
+                service = false;
             }
 
             if (name_commit_check){

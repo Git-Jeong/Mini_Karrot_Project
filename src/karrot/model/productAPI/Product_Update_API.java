@@ -20,6 +20,7 @@ public class Product_Update_API {
             try {
                 psmt.executeUpdate();
                 conn.commit();
+                DB_DAO.closeDB(conn);
                 return true;
             }catch (SQLException e){
                 conn.rollback();
@@ -42,7 +43,7 @@ public class Product_Update_API {
             // SQL 실행
             int rowsAffected = psmt.executeUpdate();  // executeUpdate()는 수정된 행 수를 반환
             conn.commit();  // 트랜잭션 커밋
-
+            DB_DAO.closeDB(conn);
             return rowsAffected > 0;  // 0개 이상의 행이 수정되었을 경우 true 반환
 
         } catch (SQLException e) {
